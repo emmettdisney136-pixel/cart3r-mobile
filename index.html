@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="CART3R MOBILE — a Discord-inspired customization companion for iPhone.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>CART3R MOBILE</title>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <button class="brand" data-page="home" aria-label="CART3R home">
+      <span class="brand-mark">C</span><span>CART3R<span class="muted">.MOBILE</span><small>PERSONALIZATION SUITE</small></span>
+    </button>
+    <button class="icon-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+  </header>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav active" data-page="home"><span>⌂</span> Overview</button>
+      <button class="nav" data-page="themes"><span>◈</span> Theme studio</button>
+      <button class="nav" data-page="plugins"><span>▦</span> Plugin manager</button>
+      <button class="nav" data-page="toolbox"><span>⌘</span> Toolbox</button>
+      <button class="nav" data-page="preview"><span>▣</span> Interface preview</button>
+      <div class="side-label second">SYSTEM</div>
+      <button class="nav" data-page="settings"><span>⚙</span> Settings</button>
+      <button class="nav" data-page="about"><span>ⓘ</span> About</button>
+      <div class="side-status"><i></i><span>LOCAL WORKSPACE</span><small>v1.0.0 · OFFLINE READY</small></div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <section class="page active" id="page-home">
+        <div class="eyebrow"><span class="pulse"></span> SYSTEM ONLINE <span class="slash">/</span> PERSONAL WORKSPACE</div>
+        <h1>Make Discord<br><span class="gradient-text">feel like yours.</span></h1>
+        <p class="lead">A customization companion built for your iPhone. Shape the look, keep useful tools close, and build a workspace that fits your style.</p>
+        <div class="hero-actions"><button class="primary" data-go="themes">OPEN THEME STUDIO <span>↗</span></button><button class="secondary" data-go="toolbox">OPEN TOOLBOX</button></div>
+        <div class="notice"><span class="notice-icon">!</span><div><b>Companion mode</b><p>This app does not inject into or modify the official Discord iPhone app. Themes and plugins apply inside CART3R MOBILE only.</p></div></div>
+        <div class="section-head"><div><div class="eyebrow">YOUR CONTROL PANEL</div><h2>Workspace overview</h2></div><span class="live-tag">● LOCAL</span></div>
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-icon">◈</span><small>ACTIVE THEME</small><strong id="homeTheme">Crimson</strong><em>Applied to this workspace</em></article>
+          <article class="stat-card"><span class="stat-icon">▦</span><small>ENABLED PLUGINS</small><strong id="homePlugins">3</strong><em>Local companion tools</em></article>
+          <article class="stat-card"><span class="stat-icon">◉</span><small>CONNECTION</small><strong>Standalone</strong><em>No Discord login required</em></article>
+        </div>
+        <div class="section-head"><div><div class="eyebrow">QUICK ACCESS</div><h2>Jump back in</h2></div></div>
+        <div class="quick-grid">
+          <button class="quick-card" data-go="themes"><b>◈</b><strong>Theme studio</strong><span>Colors and appearance <i>↗</i></span></button>
+          <button class="quick-card" data-go="plugins"><b>▦</b><strong>Plugin manager</strong><span>Enable useful modules <i>↗</i></span></button>
+          <button class="quick-card" data-go="toolbox"><b>⌘</b><strong>Toolbox</strong><span>Markdown, timestamps, colors <i>↗</i></span></button>
+        </div>
+      </section>
+
+      <section class="page" id="page-themes">
+        <div class="eyebrow">APPEARANCE / 01</div><h1>Theme <span class="gradient-text">studio.</span></h1>
+        <p class="lead">Tune the CART3R MOBILE interface. Your selection is saved on this device.</p>
+        <div class="panel"><div class="panel-title"><div><b>Preset themes</b><small>Choose a workspace palette</small></div><span class="chip">LIVE PREVIEW</span></div>
+          <div class="theme-grid">
+            <button class="theme-option selected" data-theme="crimson"><span class="swatches"><i style="--sw:#ff304f"></i><i style="--sw:#09090d"></i></span><b>Crimson</b><small>Signature red / black</small></button>
+            <button class="theme-option" data-theme="midnight"><span class="swatches"><i style="--sw:#9a7bff"></i><i style="--sw:#090914"></i></span><b>Midnight</b><small>Violet / deep navy</small></button>
+            <button class="theme-option" data-theme="ocean"><span class="swatches"><i style="--sw:#27b9ed"></i><i style="--sw:#071116"></i></span><b>Ocean</b><small>Ice blue / graphite</small></button>
+            <button class="theme-option" data-theme="emerald"><span class="swatches"><i style="--sw:#30d69a"></i><i style="--sw:#07110d"></i></span><b>Emerald</b><small>Green / dark slate</small></button>
+          </div>
+        </div>
+        <div class="panel"><div class="panel-title"><div><b>Custom accent</b><small>Pick any hex color</small></div></div>
+          <div class="color-row"><input type="color" id="accentPicker" value="#ff304f"><input id="accentHex" value="#ff304f" maxlength="7" aria-label="Accent hex code"><button class="secondary small" id="applyAccent">APPLY COLOR</button></div>
+          <p class="hint">Custom accent overrides the selected preset until you choose another preset.</p>
+        </div>
+      </section>
+
+      <section class="page" id="page-plugins">
+        <div class="eyebrow">EXTENSIONS / 02</div><h1>Plugin <span class="gradient-text">manager.</span></h1>
+        <p class="lead">Small local utilities that extend this companion app. No Discord account access or background automation.</p>
+        <div class="plugin-list" id="pluginList"></div>
+      </section>
+
+      <section class="page" id="page-toolbox">
+        <div class="eyebrow">UTILITIES / 03</div><h1>Your <span class="gradient-text">toolbox.</span></h1>
+        <p class="lead">Quick helpers for formatting and Discord-related text.</p>
+        <div class="tool-tabs"><button class="tool-tab active" data-tool="markdown">Markdown</button><button class="tool-tab" data-tool="timestamp">Timestamp</button><button class="tool-tab" data-tool="color">Color</button><button class="tool-tab" data-tool="snippets">Snippets</button></div>
+        <div class="panel tool-panel" id="tool-markdown"><b>Discord markdown preview</b><small>Type a message and preview common formatting.</small><textarea id="mdInput" rows="5" placeholder="Try **bold**, *italic*, `code`, or > a quote"></textarea><div class="preview-label">PREVIEW</div><div class="md-preview" id="mdPreview">Your preview appears here…</div><button class="secondary small" id="copyMarkdown">COPY SOURCE</button></div>
+        <div class="panel tool-panel hidden" id="tool-timestamp"><b>Unix timestamp helper</b><small>Generate a Discord timestamp from a date and time.</small><input type="datetime-local" id="dateInput"><div class="result-line"><code id="timestampResult">Select a date and time</code><button class="secondary small" id="copyTimestamp">COPY</button></div><p class="hint">Discord timestamp format: <code>&lt;t:UNIX:F&gt;</code></p></div>
+        <div class="panel tool-panel hidden" id="tool-color"><b>Hex color helper</b><small>Choose a color and copy its hex value.</small><div class="color-row"><input type="color" id="toolColor" value="#ff304f"><code id="toolHex">#FF304F</code><button class="secondary small" id="copyColor">COPY</button></div><div class="color-sample" id="colorSample"></div></div>
+        <div class="panel tool-panel hidden" id="tool-snippets"><b>Saved snippets</b><small>Stored only in this browser on this device.</small><textarea id="snippetInput" rows="3" placeholder="Save a useful message, rule, or template…"></textarea><button class="primary small" id="saveSnippet">SAVE SNIPPET</button><div id="snippetList" class="snippet-list"></div></div>
+      </section>
+
+      <section class="page" id="page-preview">
+        <div class="eyebrow">SANDBOX / 04</div><h1>Interface <span class="gradient-text">preview.</span></h1>
+        <p class="lead">A visual mockup to test your selected palette. This is not connected to Discord.</p>
+        <div class="mock-discord">
+          <div class="mock-sidebar"><div class="mock-server">C</div><div class="mock-server">✦</div><div class="mock-server">+</div></div>
+          <div class="mock-channels"><b>YOUR SERVER</b><small>⌄</small><div># general</div><div># announcements</div><div># bot-commands</div><div class="mock-user"><i></i><span>cart3r_user<small>Online</small></span></div></div>
+          <div class="mock-chat"><div class="mock-chat-head"># general <small>Mock interface · not Discord</small></div><div class="mock-message"><i> C </i><div><b>cart3r_user <small>Today at 12:00 AM</small></b><p>Welcome to the CART3R preview.</p></div></div><div class="mock-message"><i class="other">J</i><div><b>just_a_friend <small>Today at 12:01 AM</small></b><p>The accent color looks clean.</p></div></div><div class="mock-input">Message #general</div></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="eyebrow">PREFERENCES / 05</div><h1>System <span class="gradient-text">settings.</span></h1>
+        <p class="lead">Manage local behavior and saved workspace data.</p>
+        <div class="panel setting-row"><div><b>Reduced motion</b><small>Limit interface animations.</small></div><label class="switch"><input type="checkbox" id="reducedMotion"><span></span></label></div>
+        <div class="panel setting-row"><div><b>Installable app</b><small>Use Safari's Share → Add to Home Screen.</small></div><span class="chip">PWA</span></div>
+        <div class="panel setting-row"><div><b>Reset workspace</b><small>Clear saved theme, plugins, and snippets on this device.</small></div><button class="danger small" id="resetApp">RESET</button></div>
+        <div class="panel"><b>Privacy</b><p class="hint">CART3R MOBILE stores preferences and snippets in local browser storage. It does not ask for your Discord password, token, or account login. Do not paste secrets into snippets.</p></div>
+      </section>
+
+      <section class="page" id="page-about">
+        <div class="eyebrow">INFORMATION / 06</div><h1>About <span class="gradient-text">CART3R.</span></h1>
+        <p class="lead">A stock-iPhone-friendly Discord customization companion.</p>
+        <div class="panel about-mark"><div class="brand-mark big">C</div><h2>CART3R MOBILE</h2><span class="chip">VERSION 1.0.0</span><p>Built as a standalone progressive web app. It cannot inject code into, reskin, or change the official Discord app on stock iOS.</p></div>
+        <div class="panel"><b>Useful links</b><a class="link-row" href="https://discord.com/app" target="_blank" rel="noopener">Open Discord Web ↗</a><a class="link-row" href="https://support.discord.com/" target="_blank" rel="noopener">Discord Support ↗</a><a class="link-row" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </section>
+      <footer>© CART3R MOBILE <span>BUILT FOR YOUR WORKSPACE</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
